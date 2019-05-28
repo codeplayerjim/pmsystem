@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+jwt:
+  tokenHeader: Authorization
+  secret: mySecret
+  expiretime: 604800
+  tokenHead: Bearer
+
+logging:
+  level:
+    root: info
+    com.spaker.pmsystem: debug
+    #  file: demo_log.log #配置日志生成路径
+    #  path: /var/logs #配置日志文件名称
