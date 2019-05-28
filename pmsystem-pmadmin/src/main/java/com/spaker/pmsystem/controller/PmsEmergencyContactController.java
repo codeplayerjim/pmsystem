@@ -41,6 +41,7 @@ public class PmsEmergencyContactController {
     @ApiOperation("创建紧急联系人")
     @RequestMapping(value = "/create",method = RequestMethod.POST)
     @ResponseBody
+    @PreAuthorize("hasAuthority('pms:EmergencyContact:create')")
     public CommonResult create(@Validated @RequestBody PmsEmergencyContactParam pmsEmergencyContactParam, BindingResult result){
         CommonResult commonResult;
         int count=pmsEmergencyContactService.createEmergencyContact(pmsEmergencyContactParam);
@@ -54,6 +55,7 @@ public class PmsEmergencyContactController {
     @ApiOperation("更新紧急联系人")
     @RequestMapping(value = "/update/{id}",method = RequestMethod.POST)
     @ResponseBody
+    @PreAuthorize("hasAuthority('pms:EmergencyContact:update')")
     public CommonResult update(@PathVariable("id")int id, @Validated @RequestBody PmsEmergencyContactParam pmsEmergencyContactParam, BindingResult result){
         CommonResult commonResult;
         int count=pmsEmergencyContactService.updateEmergencyContact(id,pmsEmergencyContactParam);
@@ -67,6 +69,7 @@ public class PmsEmergencyContactController {
     @ApiOperation("删除紧急联系人")
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
     @ResponseBody
+    @PreAuthorize("hasAuthority('pms:EmergencyContact:delete')")
     public CommonResult delete(@PathVariable("id")int id){
          
         int count=pmsEmergencyContactService.deleteEmergencyContact(id);
@@ -80,6 +83,7 @@ public class PmsEmergencyContactController {
     @ApiOperation("根据紧急联系人名称分页获取紧急联系人列表")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
+    @PreAuthorize("hasAuthority('pms:EmergencyContact:read')")
     public CommonResult<CommonPage<PmsEmergencyContact>> getlist(@RequestParam(value = "keyword",required = false)PmsEmergencyContactParam keyword,
                           @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
                           @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){

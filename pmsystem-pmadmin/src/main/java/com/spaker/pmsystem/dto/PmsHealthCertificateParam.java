@@ -1,5 +1,6 @@
 package com.spaker.pmsystem.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,8 +15,10 @@ import java.util.Date;
 @Setter
 public class PmsHealthCertificateParam {
     @ApiModelProperty(value = "办理时间" ,required = true)
+    @JsonFormat(pattern = "yyyy-MM--dd HH:mm:ss")
     private Date servTime;
     @ApiModelProperty(value = "到期时间" ,required = true)
+    @JsonFormat(pattern = "yyyy-MM--dd HH:mm:ss")
     private Date expirTime;
     @ApiModelProperty(value = "机构" ,required = true)
     private String institution;

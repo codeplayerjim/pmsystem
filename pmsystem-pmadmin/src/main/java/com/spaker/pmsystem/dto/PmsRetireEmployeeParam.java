@@ -34,7 +34,7 @@ public class PmsRetireEmployeeParam {
 
     @ApiModelProperty(value = "生日日期" ,required = true)
     @NotEmpty(message = "生日日期不能为空")
-    @JsonFormat(pattern = "yyyy-MM--dd HH:mm")
+    @JsonFormat(pattern = "yyyy-MM--dd HH:mm:ss")
     private Date birthday;
 
     @ApiModelProperty(value = "身份证号码" ,required = true)
