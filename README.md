@@ -20,6 +20,7 @@
 ### 组织结构
 
 pmsystem
+``` lua
 ├── pmsystem-mbg -- MyBatisGenerator生成的数据库操作代码
 ├── pmsystem-admin -- 后台管理系统接口
 ├── pmsystem-common -- 一些封装数据
@@ -63,7 +64,7 @@ Mysql | 5.7 | https://www.mysql.com/
 
 > 本地环境搭建
 
-- 本地安装开发环境中的所有工具并启动(只启动mall-admin,仅需安装mysql)，具体参考[deploy-windows.md](document/reference/deploy-windows.md);
+- 本地安装开发环境中的所有工具并启动(只启动mall-admin,仅需安装mysql)
 - 克隆源代码到本地，使用IDEA或Eclipse打开，并完成编译;
 - 在mysql中新建mall数据库，导入document/sql下的renshi.sql文件；
 - 启动mall-admin项目：直接运行com.spaker.pmsystem.PmsystemPmadminApplication的main方法即可，
