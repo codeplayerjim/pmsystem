@@ -5,6 +5,13 @@
 `pmsystem`项目是人事管理系统，是一个后台管理系统，基于SpringBoot+MyBatis实现。
 后台管理系统包含人员信息管理、权限管理。
 
+### 项目演示
+
+> 后台管理系统
+
+前端项目`pmsystem-admin-web`地址：待更新...
+
+
 ### 组织结构
 
 pmsystem
