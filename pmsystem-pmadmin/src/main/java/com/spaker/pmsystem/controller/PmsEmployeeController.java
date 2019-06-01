@@ -76,10 +76,10 @@ public class PmsEmployeeController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:employee:read')")
-    public CommonResult<CommonPage<PmsEmployee>> getlist(@RequestParam(value = "keyword",required = false)PmsEmployeeParam keyword,
+    public CommonResult<CommonPage<PmsEmployee>> getlist(@RequestParam(value = "name",required = false)String name,
                                                          @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
                                                          @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
-        List<PmsEmployee>pmsEmployeeList=pmsEmployeeService.listEmployee(keyword,pageNum,pageSize);
+        List<PmsEmployee>pmsEmployeeList=pmsEmployeeService.listEmployee(name,pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(pmsEmployeeList));
     }
 

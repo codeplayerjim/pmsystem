@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class PmsChildSituationServiceImpl implements PmsChildSituationService {
     @Autowired
-    PmsChildSituationMapper pmsChildSituationMapper;
+    private PmsChildSituationMapper pmsChildSituationMapper;
 
     @Override
     public List<PmsChildSituation> listAllChildren() {
@@ -47,15 +47,15 @@ public class PmsChildSituationServiceImpl implements PmsChildSituationService {
     }
 
     @Override
-    public List<PmsChildSituation> listChildren(PmsChildSituationParam keyword,
+    public List<PmsChildSituation> listChildren(String name,
                                                 int pageNum,
                                                 int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         PmsChildSituationExample pmsChildSituationExample=new PmsChildSituationExample();
         pmsChildSituationExample.setOrderByClause("sort desc");
         PmsChildSituationExample.Criteria criteria=pmsChildSituationExample.createCriteria();
-        if(!StringUtils.isEmpty(keyword)){
-            criteria.andNameLike("%"+keyword+"%");
+        if(!StringUtils.isEmpty(name)){
+            criteria.andNameLike("%"+name+"%");
         }
         return pmsChildSituationMapper.selectByExample(pmsChildSituationExample);
     }

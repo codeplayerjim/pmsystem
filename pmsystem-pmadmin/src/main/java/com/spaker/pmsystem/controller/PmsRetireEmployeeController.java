@@ -25,7 +25,7 @@ import java.util.List;
 @RequestMapping("/RetireEmployee")
 public class PmsRetireEmployeeController {
     @Autowired
-    PmsRetireEmployeeService pmsRetireEmployeeService;
+    private PmsRetireEmployeeService pmsRetireEmployeeService;
 
     @ApiOperation("获取全部的退休员工")
     @RequestMapping(value = "/listAll",method = RequestMethod.GET)
@@ -73,10 +73,10 @@ public class PmsRetireEmployeeController {
     @ApiOperation("根据员工名称分页获取员工列表")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<PmsRetireEmployee>> getlist(@RequestParam(value = "keyword",required = false)PmsRetireEmployeeParam keyword,
+    public CommonResult<CommonPage<PmsRetireEmployee>> getlist(@RequestParam(value = "name",required = false)String name,
                           @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
                           @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
-        List<PmsRetireEmployee>pmsRetireEmployeeList=pmsRetireEmployeeService.listEmployee(keyword,pageNum,pageSize);
+        List<PmsRetireEmployee>pmsRetireEmployeeList=pmsRetireEmployeeService.listEmployee(name,pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(pmsRetireEmployeeList));
     }
 

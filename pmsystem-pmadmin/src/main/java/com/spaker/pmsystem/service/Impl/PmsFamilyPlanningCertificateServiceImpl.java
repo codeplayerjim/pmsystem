@@ -47,14 +47,18 @@ public class PmsFamilyPlanningCertificateServiceImpl implements PmsFamilyPlannin
         return pmsFamilyPlanningCertificateMapper.deleteByPrimaryKey(id);
     }
 
+    /**
+     * 根据户籍排序列出信息
+     *
+     */
     @Override
-    public List<PmsFamilyPlanningCertificate> listFamilyPlanningCertificate(PmsFamilyPlanningCertificateParam keyword, int pageNum, int pageSize) {
+    public List<PmsFamilyPlanningCertificate> listFamilyPlanningCertificate(String household_register, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         PmsFamilyPlanningCertificateExample PmsFamilyPlanningCertificateExample=new PmsFamilyPlanningCertificateExample();
         PmsFamilyPlanningCertificateExample.setOrderByClause("sort desc");
         PmsFamilyPlanningCertificateExample.Criteria criteria=PmsFamilyPlanningCertificateExample.createCriteria();
-        if(StringUtils.isEmpty(keyword)){
-            criteria.andDepartmentContactLike("%"+keyword+"%");
+        if(StringUtils.isEmpty(household_register)){
+            criteria.andHouseholdRegistrationLike("%"+household_register+"%");
         }
         return pmsFamilyPlanningCertificateMapper.selectByExample(PmsFamilyPlanningCertificateExample);
     }

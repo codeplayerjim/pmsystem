@@ -75,10 +75,10 @@ public class PmsParentalSituationController {
     @ApiOperation("根据父母名称分页获取父母列表")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<PmsParentalSituation>> getlist(@RequestParam(value = "keyword",required = false)PmsParentalSituationParam keyword,
+    public CommonResult<CommonPage<PmsParentalSituation>> getlist(@RequestParam(value = "name",required = false)String name,
                                                                   @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
                                                                   @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
-        List<PmsParentalSituation>pmsParentalSituationList=pmsParentalSituationService.listParental(keyword,pageNum,pageSize);
+        List<PmsParentalSituation>pmsParentalSituationList=pmsParentalSituationService.listParental(name,pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(pmsParentalSituationList));
     }
 

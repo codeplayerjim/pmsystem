@@ -77,8 +77,8 @@ public class PmsChildSituationController {
     @ResponseBody
     public CommonResult<CommonPage<PmsChildSituation>> getlist(@RequestParam(value = "pageNum",defaultValue = "5")int pagenum,
                                                                @RequestParam(value = "pageSize",defaultValue = "1")int pagesize,
-                                                               @RequestParam(value = "keyword",required = false)PmsChildSituationParam keyword){
-        List<PmsChildSituation>pmsChildSituationList=pmsChildSituationService.listChildren(keyword,pagenum,pagesize);
+                                                               @RequestParam(value = "name",required = false)String name){
+        List<PmsChildSituation>pmsChildSituationList=pmsChildSituationService.listChildren(name,pagenum,pagesize);
         return CommonResult.success(CommonPage.restPage(pmsChildSituationList));
     }
 

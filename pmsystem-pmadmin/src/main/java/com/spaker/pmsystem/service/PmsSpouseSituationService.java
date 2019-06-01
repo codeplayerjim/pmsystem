@@ -18,7 +18,7 @@ public interface PmsSpouseSituationService {
 
     int deleteSpouse(int id);
 
-    List<PmsSpouseSituation>listSpouse(PmsSpouseSituationParam keyword, int pageNum, int pageSize);
+    List<PmsSpouseSituation>listSpouse(String name, int pageNum, int pageSize);
 
     PmsSpouseSituation getSpouse(int id);
 }

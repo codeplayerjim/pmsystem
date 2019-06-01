@@ -75,10 +75,10 @@ public class PmsFamilyPlanningCertificateController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:FamilyPlanningCertificate:read')")
-    public CommonResult<CommonPage<PmsFamilyPlanningCertificate>> getlist(@RequestParam(value = "keyword",required = false)PmsFamilyPlanningCertificateParam keyword,
+    public CommonResult<CommonPage<PmsFamilyPlanningCertificate>> getlist(@RequestParam(value = "name",required = false)String name,
                                                                           @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
                                                                           @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
-        List<PmsFamilyPlanningCertificate> pmsFamilyPlanningCertificateList=pmsFamilyPlanningCertificateService.listFamilyPlanningCertificate(keyword,pageNum,pageSize);
+        List<PmsFamilyPlanningCertificate> pmsFamilyPlanningCertificateList=pmsFamilyPlanningCertificateService.listFamilyPlanningCertificate(name,pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(pmsFamilyPlanningCertificateList));
     }
 

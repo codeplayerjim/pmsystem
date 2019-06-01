@@ -18,7 +18,7 @@ public interface PmsParentalSituationService {
 
     int deleteParental(int id);
 
-    List<PmsParentalSituation>listParental(PmsParentalSituationParam keyword, int pageNum, int pageSize);
+    List<PmsParentalSituation>listParental(String name, int pageNum, int pageSize);
 
     PmsParentalSituation getParental(int id);
 }

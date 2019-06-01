@@ -48,13 +48,13 @@ public class PmsParentalSituationServiceImpl implements PmsParentalSituationServ
     }
 
     @Override
-    public List<PmsParentalSituation> listParental(PmsParentalSituationParam keyword, int pageNum, int pageSize) {
+    public List<PmsParentalSituation> listParental(String name, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         PmsParentalSituationExample pmsParentalExample=new PmsParentalSituationExample();
         pmsParentalExample.setOrderByClause("sort desc");
         PmsParentalSituationExample.Criteria criteria=pmsParentalExample.createCriteria();
-        if(StringUtils.isEmpty(keyword)){
-            criteria.andNameLike("%"+keyword+"%");
+        if(StringUtils.isEmpty(name)){
+            criteria.andNameLike("%"+name+"%");
         }
         return pmsParentalSituationMapper.selectByExample(pmsParentalExample);
     }

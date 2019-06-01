@@ -49,12 +49,12 @@ public class PmsRetireEmployeeServiceImpl implements PmsRetireEmployeeService {
     }
 
     @Override
-    public List<PmsRetireEmployee> listEmployee(PmsRetireEmployeeParam keyword, int pageNum, int pageSize) {
+    public List<PmsRetireEmployee> listEmployee(String name, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         PmsRetireEmployeeExample pmsRetireEmployeeExample=new PmsRetireEmployeeExample();
         PmsRetireEmployeeExample.Criteria criteria=pmsRetireEmployeeExample.createCriteria();
-        if(StringUtils.isEmpty(keyword)){
-            criteria.andNameLike("%"+keyword+"%");
+        if(StringUtils.isEmpty(name)){
+            criteria.andNameLike("%"+name+"%");
         }
         pmsRetireEmployeeExample.setOrderByClause("sort desc");
         return pmsRetireEmployeeMapper.selectByExample(pmsRetireEmployeeExample);

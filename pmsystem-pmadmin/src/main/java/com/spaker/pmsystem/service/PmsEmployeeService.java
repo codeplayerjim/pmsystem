@@ -20,7 +20,7 @@ public interface PmsEmployeeService {
 
     int deleteEmployee(int id);
 
-    List<PmsEmployee>listEmployee(PmsEmployeeParam keyword, int pageNum, int pageSize);
+    List<PmsEmployee>listEmployee(String name, int pageNum, int pageSize);
 
     PmsEmployee getEmployee(int id);
 

@@ -18,7 +18,7 @@ public interface PmsEmergencyContactService {
 
     int deleteEmergencyContact(int id);
 
-    List<PmsEmergencyContact>listEmergencyContact(PmsEmergencyContactParam keyword, int pageNum, int pageSize);
+    List<PmsEmergencyContact>listEmergencyContact(String name, int pageNum, int pageSize);
 
     PmsEmergencyContact getEmergencyContact(int id);
 

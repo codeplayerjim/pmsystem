@@ -73,10 +73,10 @@ public class PmsSpouseSituationController {
     @ApiOperation("根据配偶名称分页获取父母列表")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult<CommonPage<PmsSpouseSituation>> getlist(@RequestParam(value = "keyword",required = false)PmsSpouseSituationParam keyword,
+    public CommonResult<CommonPage<PmsSpouseSituation>> getlist(@RequestParam(value = "name",required = false)String name,
                           @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
                           @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
-        List<PmsSpouseSituation>pmsSpouseSituationList=pmsSpouseSituationService.listSpouse(keyword,pageNum,pageSize);
+        List<PmsSpouseSituation>pmsSpouseSituationList=pmsSpouseSituationService.listSpouse(name,pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(pmsSpouseSituationList));
     }
 

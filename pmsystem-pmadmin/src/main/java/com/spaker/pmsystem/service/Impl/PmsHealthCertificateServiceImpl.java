@@ -9,6 +9,7 @@ import com.spaker.pmsystem.service.PmsHealthCertificateService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -47,11 +48,14 @@ public class PmsHealthCertificateServiceImpl implements PmsHealthCertificateServ
     }
 
     @Override
-    public List<PmsHealthCertificate> listHealthCertificate(PmsHealthCertificateParam keyword, int pageNum, int pageSize) {
+    public List<PmsHealthCertificate> listHealthCertificate(String institution, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         PmsHealthCertificateExample pmsHealthCertificateExample=new PmsHealthCertificateExample();
-        pmsHealthCertificateExample.setOrderByClause("sort desc");
         PmsHealthCertificateExample.Criteria criteria=pmsHealthCertificateExample.createCriteria();
+        if(StringUtils.isEmpty(institution)){
+            criteria.andInstitutionLike("%"+institution+"%");
+        }
+        pmsHealthCertificateExample.setOrderByClause("sort desc");
         return pmsHealthCertificateMapper.selectByExample(pmsHealthCertificateExample);
     }
 

@@ -48,13 +48,13 @@ public class PmsSpouseSituationServiceImpl implements PmsSpouseSituationService 
     }
 
     @Override
-    public List<PmsSpouseSituation> listSpouse(PmsSpouseSituationParam keyword, int pageNum, int pageSize) {
+    public List<PmsSpouseSituation> listSpouse(String name, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         PmsSpouseSituationExample pmsSpouseExample=new PmsSpouseSituationExample();
         pmsSpouseExample.setOrderByClause("sort desc");
         PmsSpouseSituationExample.Criteria criteria=pmsSpouseExample.createCriteria();
-        if(StringUtils.isEmpty(keyword)){
-            criteria.andNameLike("%"+keyword+"%");
+        if(StringUtils.isEmpty(name)){
+            criteria.andNameLike("%"+name+"%");
         }
         return pmsSpouseSituationMapper.selectByExample(pmsSpouseExample);
     }

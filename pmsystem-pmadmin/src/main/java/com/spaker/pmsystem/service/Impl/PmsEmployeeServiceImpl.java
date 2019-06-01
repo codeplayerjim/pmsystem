@@ -50,13 +50,13 @@ public class PmsEmployeeServiceImpl implements PmsEmployeeService {
     }
 
     @Override
-    public List<PmsEmployee> listEmployee(PmsEmployeeParam keyword, int pageNum, int pageSize) {
+    public List<PmsEmployee> listEmployee(String name, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         PmsEmployeeExample pmsEmployeeExample=new PmsEmployeeExample();
         pmsEmployeeExample.setOrderByClause("sort desc");
         PmsEmployeeExample.Criteria criteria=pmsEmployeeExample.createCriteria();
-        if(StringUtils.isEmpty(keyword)){
-            criteria.andNameLike("%"+keyword+"%");
+        if(StringUtils.isEmpty(name)){
+            criteria.andNameLike("%"+name+"%");
         }
         return pmsEmployeeMapper.selectByExample(pmsEmployeeExample);
     }

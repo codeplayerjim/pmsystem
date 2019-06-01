@@ -19,7 +19,7 @@ public interface PmsHealthCertificateService {
 
     int deleteHealthCertificate(int id);
 
-    List<PmsHealthCertificate> listHealthCertificate(PmsHealthCertificateParam keyword, int pageNum, int pageSize);
+    List<PmsHealthCertificate> listHealthCertificate(String institution, int pageNum, int pageSize);
 
      PmsHealthCertificate getHealthCertificate(int id);
 }

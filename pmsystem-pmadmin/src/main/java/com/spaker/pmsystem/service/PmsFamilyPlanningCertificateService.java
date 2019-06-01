@@ -18,7 +18,7 @@ public interface PmsFamilyPlanningCertificateService {
 
     int deleteFamilyPlanningCertificate(int id);
 
-    List<PmsFamilyPlanningCertificate> listFamilyPlanningCertificate(PmsFamilyPlanningCertificateParam keyword, int pageNum, int pageSize);
+    List<PmsFamilyPlanningCertificate> listFamilyPlanningCertificate(String household_register, int pageNum, int pageSize);
 
     PmsFamilyPlanningCertificate getFamilyPlanningCertificate(int id);
 }

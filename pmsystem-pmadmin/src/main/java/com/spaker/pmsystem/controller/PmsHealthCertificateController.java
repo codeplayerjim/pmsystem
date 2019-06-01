@@ -76,10 +76,10 @@ public class PmsHealthCertificateController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:HealthCertificate:read')")
-    public CommonResult<CommonPage<PmsHealthCertificate>> getlist(@RequestParam(value = "keyword",required = false)PmsHealthCertificateParam keyword,
+    public CommonResult<CommonPage<PmsHealthCertificate>> getlist(@RequestParam(value = "institution",required = false)String institution,
                                                                   @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
                                                                   @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
-        List<PmsHealthCertificate> pmsHealthCertificateList=pmsHealthCertificateService.listHealthCertificate(keyword,pageNum,pageSize);
+        List<PmsHealthCertificate> pmsHealthCertificateList=pmsHealthCertificateService.listHealthCertificate(institution,pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(pmsHealthCertificateList));
     }
 

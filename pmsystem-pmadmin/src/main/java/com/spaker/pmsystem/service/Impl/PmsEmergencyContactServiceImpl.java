@@ -47,13 +47,13 @@ public class PmsEmergencyContactServiceImpl implements PmsEmergencyContactServic
     }
 
     @Override
-    public List<PmsEmergencyContact> listEmergencyContact(PmsEmergencyContactParam keyword, int pageNum, int pageSize) {
+    public List<PmsEmergencyContact> listEmergencyContact(String name, int pageNum, int pageSize) {
         PageHelper.startPage(pageNum,pageSize);
         PmsEmergencyContactExample pmsSpouseExample=new PmsEmergencyContactExample();
         pmsSpouseExample.setOrderByClause("sort desc");
         PmsEmergencyContactExample.Criteria criteria=pmsSpouseExample.createCriteria();
-        if(StringUtils.isEmpty(keyword)){
-            criteria.andNameLike("%"+keyword+"%");
+        if(StringUtils.isEmpty(name)){
+            criteria.andNameLike("%"+name+"%");
         }
         return pmsEmergencyContactMapper.selectByExample(pmsSpouseExample);
     }

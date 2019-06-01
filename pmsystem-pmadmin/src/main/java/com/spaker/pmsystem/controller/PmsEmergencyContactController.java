@@ -84,10 +84,10 @@ public class PmsEmergencyContactController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:EmergencyContact:read')")
-    public CommonResult<CommonPage<PmsEmergencyContact>> getlist(@RequestParam(value = "keyword",required = false)PmsEmergencyContactParam keyword,
+    public CommonResult<CommonPage<PmsEmergencyContact>> getlist(@RequestParam(value = "name",required = false)String name,
                           @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
                           @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
-        List<PmsEmergencyContact>pmsEmergencyContactList=pmsEmergencyContactService.listEmergencyContact(keyword,pageSize,pageNum);
+        List<PmsEmergencyContact>pmsEmergencyContactList=pmsEmergencyContactService.listEmergencyContact(name,pageSize,pageNum);
         return CommonResult.success(CommonPage.restPage(pmsEmergencyContactList));
     }
 

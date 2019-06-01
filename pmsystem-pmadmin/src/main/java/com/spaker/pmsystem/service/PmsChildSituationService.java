@@ -20,7 +20,7 @@ public interface PmsChildSituationService {
 
     int deleteChildren(int id);
 
-    List<PmsChildSituation>listChildren(PmsChildSituationParam keyword, int pageNum, int pageSize);
+    List<PmsChildSituation>listChildren(String name, int pageNum, int pageSize);
 
     PmsChildSituation getChildren(int id);
 }

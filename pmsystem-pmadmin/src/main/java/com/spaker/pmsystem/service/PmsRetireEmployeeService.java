@@ -19,7 +19,7 @@ public interface PmsRetireEmployeeService {
 
     int deleteEmployee(int id);
 
-    List<PmsRetireEmployee>listEmployee(PmsRetireEmployeeParam keyword,int pageNum,int pageSize);
+    List<PmsRetireEmployee>listEmployee(String name,int pageNum,int pageSize);
 
     PmsRetireEmployee getEmployee(int id);
 }
