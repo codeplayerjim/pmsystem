@@ -48,8 +48,8 @@ CREATE TABLE `pms_contract_signing` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `category` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '类别',
   `exipr_time` DATETIME DEFAULT NULL COMMENT'到期',
-  `expir_situation` DATETIME DEFAULT NULL COMMENT'到期情况',
-  'is_expir' ENUM('已过期','未过期') default '未过期' comment '提醒合同即将过期',
+  `expir_situation` varchar(20) DEFAULT NULL COMMENT'到期情况',
+  is_expire ENUM('已过期','未过期') default '未过期' comment '提醒合同即将过期',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=gbk COMMENT='合同签订情况';
 
@@ -108,7 +108,7 @@ CREATE TABLE `pms_family_planning_certificate` (
   `household_registration` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment'户籍地',
   `contraception_measures` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment'避孕措施',
   `residence` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '现居地',
-  `department_contact` datetime DEFAULT NULL comment '计生部门联系电话',
+  `department_contact` varchar(60) DEFAULT NULL comment '计生部门联系电话',
   `vaild_time` DATETIME DEFAULT NULL comment '计生证有效时间',
   PRIMARY KEY (id)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=gbk COMMENT='计生证';
@@ -126,7 +126,7 @@ INSERT INTO `pms_family_planning_certificate` VALUES ('3', '0222222', '广西省
 DROP TABLE IF EXISTS `pms_free_of_charge`;
 CREATE TABLE `pms_free_of_charge` (
   `id` int(20) NOT NULL,
-  `cardNumber` int(20) DEFAULT NULL COMMENT '卡号',
+  `cardNumber` varchar(20) DEFAULT NULL COMMENT '卡号',
   `cardType` ENUM('临时卡','钱包卡','无') CHARACTER SET utf8mb4 DEFAULT NULL,
   is_alarm ENUM('新办理','旧办理')CHARACTER SET utf8mb4 DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -208,7 +208,7 @@ DROP TABLE IF EXISTS `pms_emergency_contact`;
 CREATE TABLE `pms_emergency_contact` (
                                        `id` int(20) NOT NULL AUTO_INCREMENT,
                                        `emergname` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '紧急联系人姓名',
-                                       `emergphone` int(20) DEFAULT NULL comment '紧急联系人电话号码',
+                                       `emergphone` varchar(20) DEFAULT NULL comment '紧急联系人电话号码',
                                        PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=gbk COMMENT='紧急联系人';
 
@@ -246,7 +246,7 @@ INSERT INTO `pms_parental_situation` VALUES ('2', '王文凤', '母亲', '55', '
 DROP TABLE IF EXISTS pms_child_situation;
 CREATE TABLE pms_child_situation(
                                      `id` int(20) NOT NULL AUTO_INCREMENT,
-                                     `quantity` int(20) DEFAULT NULL comment '数量',
+                                     `quantity` int(10) DEFAULT NULL comment '数量',
                                       sex ENUM('男','女','保密'),
                                      `name` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
                                      `age` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
@@ -285,7 +285,7 @@ INSERT INTO `pms_spouse_situation` VALUES ('2', '江小白', '22', '护士', '13
 DROP TABLE IF EXISTS `pms_professional_skills_certificate`;
 CREATE TABLE `pms_professional_skills_certificate` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
-  certificate_No int(30) default null comment'证书号',
+  certificate_No varchar(20) default null comment'证书号',
   profession_level varchar(5) default null comment '专业技能级别',
   release_organization varchar(20) default null comment '发证机关',
   release_data DATETIME default null comment'发证日期' ,
@@ -356,11 +356,11 @@ CREATE TABLE `pms_retire_employee` (
   native_place varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '籍贯',
   `birthplace` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '出生地',
   `birthday` DATETIME  DEFAULT NULL comment '出生年月',
-   bankCard int(32)  DEFAULT NULL comment='银行卡',
-  `idCard` int(32) DEFAULT NULL COMMENT='身份证号码',
-  `residence` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment='现居地址',
-  `emergphone` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment='紧急联系电话',
-  EmergencyContact varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL Comment='紧急联系人联系方式',
+   bankCard varchar(32)  DEFAULT NULL comment'银行卡',
+  `idCard` varchar(32) DEFAULT NULL COMMENT'身份证号码',
+  `residence` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment'现居地址',
+  `emergphone` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment'紧急联系电话',
+  EmergencyContact varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL Comment'紧急联系人联系方式',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=gbk COMMENT='事业编制退休人员员工基本信息';
 
@@ -436,7 +436,7 @@ DROP TABLE IF EXISTS `pms_work_permit_processing_record`;
 CREATE TABLE `pms_work_permit_processing_record` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   healthy_id int(20) default null ,
-  family_planning_certificate_id int(20) default null ,
+  family_planning_certificate_id varchar(20) default null ,
   expir_time datetime null comment '到期日期',
   serv_time datetime null comment '办理日期',
   PRIMARY KEY (`id`)
@@ -446,7 +446,7 @@ CREATE TABLE `pms_work_permit_processing_record` (
 -- Records of pms_work_permit_processing_record
 -- ----------------------------
 INSERT INTO `pms_work_permit_processing_record` VALUES ('1','1','1','2015-07-26 12:20:30','2015-07-26 12:20:30');
-INSERT INTO `pms_work_permit_processing_record` VALUES ('2', '1','','2015-07-26 12:20:30','2015-07-26 12:20:30');
+INSERT INTO `pms_work_permit_processing_record` VALUES ('2', '1','2','2015-07-26 12:20:30','2015-07-26 12:20:30');
 INSERT INTO `pms_work_permit_processing_record` VALUES ('3', '2','1','2015-07-26 12:20:30','2015-07-26 12:20:30');
 INSERT INTO `pms_work_permit_processing_record` VALUES ('4', '3','2','2015-07-26 12:20:30','2015-07-26 12:20:30');
 
@@ -467,9 +467,9 @@ create table if not exists pmsystem.pms_admin
 )
   comment '后台用户表';
 
-INSERT INTO `pms_admin` VALUES ('1', 'test', '$2a$10$NZ5o7r2E.ayT2ZoxgjlI.eJ6OEYqjH7INR/F.mXDbjZJi9HF0YCVG', '', null, '测试账号', null, '2018-09-29 13:55:30', '2018-09-29 13:55:39', '1');
-INSERT INTO `pms_admin` VALUES ('2', 'admin', '$2a$10$NZ5o7r2E.ayT2ZoxgjlI.eJ6OEYqjH7INR/F.mXDbjZJi9HF0YCVG', '', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2019-03-20 15:38:50', '1');
-INSERT INTO `pms_admin` VALUES ('3', 'admin', '$2a$10$NZ5o7r2E.ayT2ZoxgjlI.eJ6OEYqjH7INR/F.mXDbjZJi9HF0YCVG', '', 'pmadmin@163.com', '人事管理员', '人事管理员', '2018-10-08 13:32:47', '2019-03-20 15:38:50', '1');
+INSERT INTO `pms_admin` VALUES ('1', 'test', '$2a$10$NZ5o7r2E.ayT2ZoxgjlI.eJ6OEYqjH7INR/F.mXDbjZJi9HF0YCVG', 'http', null, '测试账号', null, '2018-09-29 13:55:30', '2018-09-29 13:55:39', '1');
+INSERT INTO `pms_admin` VALUES ('2', 'admin', '$2a$10$NZ5o7r2E.ayT2ZoxgjlI.eJ6OEYqjH7INR/F.mXDbjZJi9HF0YCVG', 'http', 'admin@163.com', '系统管理员', '系统管理员', '2018-10-08 13:32:47', '2019-03-20 15:38:50', '1');
+INSERT INTO `pms_admin` VALUES ('3', 'admin', '$2a$10$NZ5o7r2E.ayT2ZoxgjlI.eJ6OEYqjH7INR/F.mXDbjZJi9HF0YCVG', 'http', 'pmadmin@163.com', '人事管理员', '人事管理员', '2018-10-08 13:32:47', '2019-03-20 15:38:50', '1');
 
 create table if not exists pmsystem.pms_permission
 (
