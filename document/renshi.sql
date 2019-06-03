@@ -15,7 +15,6 @@ Date: 2019-03-22 22:30:40
 
 SET FOREIGN_KEY_CHECKS=0;
 
-use  pmsystem;
 
 -- ----------------------------
 -- Table structure for `pms_birth_recore`
