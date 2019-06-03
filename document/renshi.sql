@@ -22,20 +22,22 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `pms_birth_recore`;
 CREATE TABLE `pms_birth_recore` (
   `id` int(20) NOT NULL,
-  `firstchild` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `employee_inspection_hospital` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `childbirth_hospital` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `birth_certificate_number` varchar(20) DEFAULT NULL,
-  `birth_surgery_date` DATETIME  DEFAULT NULL,
+  `newborn` ENUM('头胎','二胎') CHARACTER SET utf8mb4 DEFAULT NULL comment '出生类型',
+  `Product_inspection_hospital` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '产检医院',
+  `childbirth_hospital` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '分娩医院',
+  `birth_certificate_number` int(20) DEFAULT NULL comment '计生证号码',
+  `fertility_date` DATETIME  DEFAULT NULL comment '生育时间',
+    abortion_data DATETIME DEFAULT NULL comment '流产时间',
+    birth_control_data DATETIME DEFAULT NULL comment '计划生育时间'
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk COMMENT='生育记录';
 
 -- ----------------------------
 -- Records of pms_birth_recore
 -- ----------------------------
-INSERT INTO `pms_birth_recore` VALUES ('1', '二胎', '玛丽妇科医院', '妇科医院', '1110010', '2019-02-03 15:14:21');
-INSERT INTO `pms_birth_recore` VALUES ('2', '头胎', '玛丽妇科医院', '人民第三医院', '1003223', '2020-01-02 16:24:30');
-INSERT INTO `pms_birth_recore` VALUES ('3', '二胎', '玛丽妇科医院', '妇科医院', '1020020', '19-05-25 19:20:30');
+INSERT INTO `pms_birth_recore` VALUES ('1', '二胎', '玛丽妇科医院', '妇科医院', '1110010', '2019-02-03 15:14:21','2019-02-03 15:14:21','2019-02-03 15:14:21');
+INSERT INTO `pms_birth_recore` VALUES ('2', '头胎', '玛丽妇科医院', '人民第三医院', '1003223', '2020-01-02 16:24:30','2019-02-03 15:14:21','2019-02-03 15:14:21');
+INSERT INTO `pms_birth_recore` VALUES ('3', '二胎', '玛丽妇科医院', '妇科医院', '1020020', '19-05-25 19:20:30','19-05-25 19:20:30','19-05-25 19:20:30');
 
 
 -- ----------------------------
@@ -44,18 +46,19 @@ INSERT INTO `pms_birth_recore` VALUES ('3', '二胎', '玛丽妇科医院', '妇
 DROP TABLE IF EXISTS `pms_contract_signing`;
 CREATE TABLE `pms_contract_signing` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
-  `category` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `category` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '类别',
   `exipr_time` DATETIME DEFAULT NULL COMMENT'到期',
   `expir_situation` DATETIME DEFAULT NULL COMMENT'到期情况',
+  'is_expir' ENUM('已过期','未过期') default '未过期' comment '提醒合同即将过期',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=gbk COMMENT='合同签订情况';
 
 -- ----------------------------
 -- Records of pms_contract_signing
 -- ----------------------------
-INSERT INTO `pms_contract_signing` VALUES ('1', '厨师合同', '2019-06-12 00:00:00', '已签约');
-INSERT INTO `pms_contract_signing` VALUES ('2', '技师合同', '2020-12-30 00:00:00', '已签约');
-INSERT INTO `pms_contract_signing` VALUES ('3', '厨师合同', '2022-10-05 00:00:00', '已签约');
+INSERT INTO `pms_contract_signing` VALUES ('1', '厨师合同', '2019-06-12 00:00:00', '已签约','已过期');
+INSERT INTO `pms_contract_signing` VALUES ('2', '技师合同', '2020-12-30 00:00:00', '已签约','已过期');
+INSERT INTO `pms_contract_signing` VALUES ('3', '厨师合同', '2022-10-05 00:00:00', '已签约','未过期');
 
 
 -- ----------------------------
@@ -72,9 +75,9 @@ CREATE TABLE `pms_employee` (
   `date_of_birth`DATETIME  DEFAULT NULL,
   `identification_number` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   `is_marry` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT'婚否',
-  `political_status` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `political_status` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL comment '政治状态',
   `house_register_type` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT'户口性质',
-  `canteen` varchar(20) DEFAULT NULL,
+  `canteen` varchar(20) DEFAULT NULL comment '所在食堂',
   `department` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   `authr_stren` varchar(20) DEFAULT NULL comment'编制',
   `photo` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT'照片（红底）',
