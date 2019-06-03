@@ -28,7 +28,7 @@ CREATE TABLE `pms_birth_recore` (
   `birth_certificate_number` int(20) DEFAULT NULL comment '计生证号码',
   `fertility_date` DATETIME  DEFAULT NULL comment '生育时间',
     abortion_data DATETIME DEFAULT NULL comment '流产时间',
-    birth_control_data DATETIME DEFAULT NULL comment '计划生育时间'
+    birth_control_data DATETIME DEFAULT NULL comment '计划生育时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk COMMENT='生育记录';
 
