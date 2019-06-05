@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaker.pmsystem.dao.PmsRolePermissionRelationDao">
+    <insert id="insertList">
+        INSERT INTO pmsystem.pms_role_permission_relation(role_id, permission_id) VALUES
+        <foreach collection="list" separator="," item="item" index="index">
+            (#{item.roleId,jdbcType=INT},
+            #{item.permissionId,jdbcType=INT}
+            )
+
+        </foreach>
+
+    </insert>
+    <select id="getPermissionList" resultMap="com.spaker.pmsystem.mapper.PmsPermissionMapper.BaseResultMap">
+        SELECT
+            p.*
+        FROM pmsystem.pms_role_permission_relation r
+        LEFT JOIN pmsystem.pms_permission P on r.permission_id=P.id
+        WHERE
+            r.role_id=#{roleId};
+    </select>
+</mapper>
