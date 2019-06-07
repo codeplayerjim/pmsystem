@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaker.pmsystem.mapper.PmsEmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.spaker.pmsystem.model.PmsEmployee">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="birthpalce" jdbcType="VARCHAR" property="birthpalce" />
+    <result column="job_number" jdbcType="VARCHAR" property="jobNumber" />
+    <result column="date_of_birth" jdbcType="TIMESTAMP" property="dateOfBirth" />
+    <result column="identification_number" jdbcType="VARCHAR" property="identificationNumber" />
+    <result column="is_marry" jdbcType="VARCHAR" property="isMarry" />
+    <result column="political_status" jdbcType="VARCHAR" property="politicalStatus" />
+    <result column="house_register_type" jdbcType="VARCHAR" property="houseRegisterType" />
+    <result column="canteen" jdbcType="VARCHAR" property="canteen" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="authr_stren" jdbcType="VARCHAR" property="authrStren" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="highest_education" jdbcType="VARCHAR" property="highestEducation" />
+    <result column="graduated_school" jdbcType="VARCHAR" property="graduatedSchool" />
+    <result column="id_card" jdbcType="VARCHAR" property="idCard" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="house_register_location" jdbcType="VARCHAR" property="houseRegisterLocation" />
+    <result column="residence" jdbcType="VARCHAR" property="residence" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, sex, nation, birthpalce, job_number, date_of_birth, identification_number, 
+    is_marry, political_status, house_register_type, canteen, department, authr_stren, 
+    photo, position, highest_education, graduated_school, id_card, email, house_register_location, 
+    residence
+  </sql>
+  <select id="selectByExample" parameterType="com.spaker.pmsystem.model.PmsEmployeeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pms_employee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_employee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pms_employee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spaker.pmsystem.model.PmsEmployeeExample">
+    delete from pms_employee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.spaker.pmsystem.model.PmsEmployee">
+    insert into pms_employee (id, name, sex, 
+      nation, birthpalce, job_number, 
+      date_of_birth, identification_number, is_marry, 
+      political_status, house_register_type, canteen, 
+      department, authr_stren, photo, 
+      position, highest_education, graduated_school, 
+      id_card, email, house_register_location, 
+      residence)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{nation,jdbcType=VARCHAR}, #{birthpalce,jdbcType=VARCHAR}, #{jobNumber,jdbcType=VARCHAR}, 
+      #{dateOfBirth,jdbcType=TIMESTAMP}, #{identificationNumber,jdbcType=VARCHAR}, #{isMarry,jdbcType=VARCHAR}, 
+      #{politicalStatus,jdbcType=VARCHAR}, #{houseRegisterType,jdbcType=VARCHAR}, #{canteen,jdbcType=VARCHAR}, 
+      #{department,jdbcType=VARCHAR}, #{authrStren,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{highestEducation,jdbcType=VARCHAR}, #{graduatedSchool,jdbcType=VARCHAR}, 
+      #{idCard,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{houseRegisterLocation,jdbcType=VARCHAR}, 
+      #{residence,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.spaker.pmsystem.model.PmsEmployee">
+    insert into pms_employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="birthpalce != null">
+        birthpalce,
+      </if>
+      <if test="jobNumber != null">
+        job_number,
+      </if>
+      <if test="dateOfBirth != null">
+        date_of_birth,
+      </if>
+      <if test="identificationNumber != null">
+        identification_number,
+      </if>
+      <if test="isMarry != null">
+        is_marry,
+      </if>
+      <if test="politicalStatus != null">
+        political_status,
+      </if>
+      <if test="houseRegisterType != null">
+        house_register_type,
+      </if>
+      <if test="canteen != null">
+        canteen,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="authrStren != null">
+        authr_stren,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="highestEducation != null">
+        highest_education,
+      </if>
+      <if test="graduatedSchool != null">
+        graduated_school,
+      </if>
+      <if test="idCard != null">
+        id_card,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="houseRegisterLocation != null">
+        house_register_location,
+      </if>
+      <if test="residence != null">
+        residence,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthpalce != null">
+        #{birthpalce,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNumber != null">
+        #{jobNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfBirth != null">
+        #{dateOfBirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identificationNumber != null">
+        #{identificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="isMarry != null">
+        #{isMarry,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalStatus != null">
+        #{politicalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="houseRegisterType != null">
+        #{houseRegisterType,jdbcType=VARCHAR},
+      </if>
+      <if test="canteen != null">
+        #{canteen,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="authrStren != null">
+        #{authrStren,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="highestEducation != null">
+        #{highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="graduatedSchool != null">
+        #{graduatedSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="houseRegisterLocation != null">
+        #{houseRegisterLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="residence != null">
+        #{residence,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spaker.pmsystem.model.PmsEmployeeExample" resultType="java.lang.Integer">
+    select count(*) from pms_employee
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pms_employee
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nation != null">
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthpalce != null">
+        birthpalce = #{record.birthpalce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobNumber != null">
+        job_number = #{record.jobNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dateOfBirth != null">
+        date_of_birth = #{record.dateOfBirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.identificationNumber != null">
+        identification_number = #{record.identificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isMarry != null">
+        is_marry = #{record.isMarry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.politicalStatus != null">
+        political_status = #{record.politicalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.houseRegisterType != null">
+        house_register_type = #{record.houseRegisterType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.canteen != null">
+        canteen = #{record.canteen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.department != null">
+        department = #{record.department,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authrStren != null">
+        authr_stren = #{record.authrStren,jdbcType=VARCHAR},
+      </if>
+      <if test="record.photo != null">
+        photo = #{record.photo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null">
+        position = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.highestEducation != null">
+        highest_education = #{record.highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduatedSchool != null">
+        graduated_school = #{record.graduatedSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCard != null">
+        id_card = #{record.idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.houseRegisterLocation != null">
+        house_register_location = #{record.houseRegisterLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.residence != null">
+        residence = #{record.residence,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pms_employee
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      birthpalce = #{record.birthpalce,jdbcType=VARCHAR},
+      job_number = #{record.jobNumber,jdbcType=VARCHAR},
+      date_of_birth = #{record.dateOfBirth,jdbcType=TIMESTAMP},
+      identification_number = #{record.identificationNumber,jdbcType=VARCHAR},
+      is_marry = #{record.isMarry,jdbcType=VARCHAR},
+      political_status = #{record.politicalStatus,jdbcType=VARCHAR},
+      house_register_type = #{record.houseRegisterType,jdbcType=VARCHAR},
+      canteen = #{record.canteen,jdbcType=VARCHAR},
+      department = #{record.department,jdbcType=VARCHAR},
+      authr_stren = #{record.authrStren,jdbcType=VARCHAR},
+      photo = #{record.photo,jdbcType=VARCHAR},
+      position = #{record.position,jdbcType=VARCHAR},
+      highest_education = #{record.highestEducation,jdbcType=VARCHAR},
+      graduated_school = #{record.graduatedSchool,jdbcType=VARCHAR},
+      id_card = #{record.idCard,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      house_register_location = #{record.houseRegisterLocation,jdbcType=VARCHAR},
+      residence = #{record.residence,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spaker.pmsystem.model.PmsEmployee">
+    update pms_employee
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthpalce != null">
+        birthpalce = #{birthpalce,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNumber != null">
+        job_number = #{jobNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dateOfBirth != null">
+        date_of_birth = #{dateOfBirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identificationNumber != null">
+        identification_number = #{identificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="isMarry != null">
+        is_marry = #{isMarry,jdbcType=VARCHAR},
+      </if>
+      <if test="politicalStatus != null">
+        political_status = #{politicalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="houseRegisterType != null">
+        house_register_type = #{houseRegisterType,jdbcType=VARCHAR},
+      </if>
+      <if test="canteen != null">
+        canteen = #{canteen,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="authrStren != null">
+        authr_stren = #{authrStren,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="highestEducation != null">
+        highest_education = #{highestEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="graduatedSchool != null">
+        graduated_school = #{graduatedSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null">
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="houseRegisterLocation != null">
+        house_register_location = #{houseRegisterLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="residence != null">
+        residence = #{residence,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spaker.pmsystem.model.PmsEmployee">
+    update pms_employee
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      birthpalce = #{birthpalce,jdbcType=VARCHAR},
+      job_number = #{jobNumber,jdbcType=VARCHAR},
+      date_of_birth = #{dateOfBirth,jdbcType=TIMESTAMP},
+      identification_number = #{identificationNumber,jdbcType=VARCHAR},
+      is_marry = #{isMarry,jdbcType=VARCHAR},
+      political_status = #{politicalStatus,jdbcType=VARCHAR},
+      house_register_type = #{houseRegisterType,jdbcType=VARCHAR},
+      canteen = #{canteen,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      authr_stren = #{authrStren,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      highest_education = #{highestEducation,jdbcType=VARCHAR},
+      graduated_school = #{graduatedSchool,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      house_register_location = #{houseRegisterLocation,jdbcType=VARCHAR},
+      residence = #{residence,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

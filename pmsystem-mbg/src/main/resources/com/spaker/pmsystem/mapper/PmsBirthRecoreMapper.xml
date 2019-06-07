@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaker.pmsystem.mapper.PmsBirthRecoreMapper">
+  <resultMap id="BaseResultMap" type="com.spaker.pmsystem.model.PmsBirthRecore">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="newborn" jdbcType="CHAR" property="newborn" />
+    <result column="Product_inspection_hospital" jdbcType="VARCHAR" property="productInspectionHospital" />
+    <result column="childbirth_hospital" jdbcType="VARCHAR" property="childbirthHospital" />
+    <result column="birth_certificate_number" jdbcType="INTEGER" property="birthCertificateNumber" />
+    <result column="fertility_date" jdbcType="TIMESTAMP" property="fertilityDate" />
+    <result column="abortion_data" jdbcType="TIMESTAMP" property="abortionData" />
+    <result column="birth_control_data" jdbcType="TIMESTAMP" property="birthControlData" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, newborn, Product_inspection_hospital, childbirth_hospital, birth_certificate_number, 
+    fertility_date, abortion_data, birth_control_data
+  </sql>
+  <select id="selectByExample" parameterType="com.spaker.pmsystem.model.PmsBirthRecoreExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pms_birth_recore
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_birth_recore
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pms_birth_recore
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spaker.pmsystem.model.PmsBirthRecoreExample">
+    delete from pms_birth_recore
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.spaker.pmsystem.model.PmsBirthRecore">
+    insert into pms_birth_recore (id, newborn, Product_inspection_hospital, 
+      childbirth_hospital, birth_certificate_number, 
+      fertility_date, abortion_data, birth_control_data
+      )
+    values (#{id,jdbcType=INTEGER}, #{newborn,jdbcType=CHAR}, #{productInspectionHospital,jdbcType=VARCHAR}, 
+      #{childbirthHospital,jdbcType=VARCHAR}, #{birthCertificateNumber,jdbcType=INTEGER}, 
+      #{fertilityDate,jdbcType=TIMESTAMP}, #{abortionData,jdbcType=TIMESTAMP}, #{birthControlData,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.spaker.pmsystem.model.PmsBirthRecore">
+    insert into pms_birth_recore
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="newborn != null">
+        newborn,
+      </if>
+      <if test="productInspectionHospital != null">
+        Product_inspection_hospital,
+      </if>
+      <if test="childbirthHospital != null">
+        childbirth_hospital,
+      </if>
+      <if test="birthCertificateNumber != null">
+        birth_certificate_number,
+      </if>
+      <if test="fertilityDate != null">
+        fertility_date,
+      </if>
+      <if test="abortionData != null">
+        abortion_data,
+      </if>
+      <if test="birthControlData != null">
+        birth_control_data,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="newborn != null">
+        #{newborn,jdbcType=CHAR},
+      </if>
+      <if test="productInspectionHospital != null">
+        #{productInspectionHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="childbirthHospital != null">
+        #{childbirthHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="birthCertificateNumber != null">
+        #{birthCertificateNumber,jdbcType=INTEGER},
+      </if>
+      <if test="fertilityDate != null">
+        #{fertilityDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="abortionData != null">
+        #{abortionData,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birthControlData != null">
+        #{birthControlData,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spaker.pmsystem.model.PmsBirthRecoreExample" resultType="java.lang.Integer">
+    select count(*) from pms_birth_recore
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pms_birth_recore
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.newborn != null">
+        newborn = #{record.newborn,jdbcType=CHAR},
+      </if>
+      <if test="record.productInspectionHospital != null">
+        Product_inspection_hospital = #{record.productInspectionHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.childbirthHospital != null">
+        childbirth_hospital = #{record.childbirthHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthCertificateNumber != null">
+        birth_certificate_number = #{record.birthCertificateNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.fertilityDate != null">
+        fertility_date = #{record.fertilityDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.abortionData != null">
+        abortion_data = #{record.abortionData,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.birthControlData != null">
+        birth_control_data = #{record.birthControlData,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pms_birth_recore
+    set id = #{record.id,jdbcType=INTEGER},
+      newborn = #{record.newborn,jdbcType=CHAR},
+      Product_inspection_hospital = #{record.productInspectionHospital,jdbcType=VARCHAR},
+      childbirth_hospital = #{record.childbirthHospital,jdbcType=VARCHAR},
+      birth_certificate_number = #{record.birthCertificateNumber,jdbcType=INTEGER},
+      fertility_date = #{record.fertilityDate,jdbcType=TIMESTAMP},
+      abortion_data = #{record.abortionData,jdbcType=TIMESTAMP},
+      birth_control_data = #{record.birthControlData,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spaker.pmsystem.model.PmsBirthRecore">
+    update pms_birth_recore
+    <set>
+      <if test="newborn != null">
+        newborn = #{newborn,jdbcType=CHAR},
+      </if>
+      <if test="productInspectionHospital != null">
+        Product_inspection_hospital = #{productInspectionHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="childbirthHospital != null">
+        childbirth_hospital = #{childbirthHospital,jdbcType=VARCHAR},
+      </if>
+      <if test="birthCertificateNumber != null">
+        birth_certificate_number = #{birthCertificateNumber,jdbcType=INTEGER},
+      </if>
+      <if test="fertilityDate != null">
+        fertility_date = #{fertilityDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="abortionData != null">
+        abortion_data = #{abortionData,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birthControlData != null">
+        birth_control_data = #{birthControlData,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spaker.pmsystem.model.PmsBirthRecore">
+    update pms_birth_recore
+    set newborn = #{newborn,jdbcType=CHAR},
+      Product_inspection_hospital = #{productInspectionHospital,jdbcType=VARCHAR},
+      childbirth_hospital = #{childbirthHospital,jdbcType=VARCHAR},
+      birth_certificate_number = #{birthCertificateNumber,jdbcType=INTEGER},
+      fertility_date = #{fertilityDate,jdbcType=TIMESTAMP},
+      abortion_data = #{abortionData,jdbcType=TIMESTAMP},
+      birth_control_data = #{birthControlData,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

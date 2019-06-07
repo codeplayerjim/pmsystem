@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaker.pmsystem.mapper.PmsWorkPermitProcessingRecordMapper">
+  <resultMap id="BaseResultMap" type="com.spaker.pmsystem.model.PmsWorkPermitProcessingRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="healthy_id" jdbcType="INTEGER" property="healthyId" />
+    <result column="family_planning_certificate_id" jdbcType="VARCHAR" property="familyPlanningCertificateId" />
+    <result column="expir_time" jdbcType="TIMESTAMP" property="expirTime" />
+    <result column="serv_time" jdbcType="TIMESTAMP" property="servTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, healthy_id, family_planning_certificate_id, expir_time, serv_time
+  </sql>
+  <select id="selectByExample" parameterType="com.spaker.pmsystem.model.PmsWorkPermitProcessingRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pms_work_permit_processing_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_work_permit_processing_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pms_work_permit_processing_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spaker.pmsystem.model.PmsWorkPermitProcessingRecordExample">
+    delete from pms_work_permit_processing_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.spaker.pmsystem.model.PmsWorkPermitProcessingRecord">
+    insert into pms_work_permit_processing_record (id, healthy_id, family_planning_certificate_id, 
+      expir_time, serv_time)
+    values (#{id,jdbcType=INTEGER}, #{healthyId,jdbcType=INTEGER}, #{familyPlanningCertificateId,jdbcType=VARCHAR}, 
+      #{expirTime,jdbcType=TIMESTAMP}, #{servTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.spaker.pmsystem.model.PmsWorkPermitProcessingRecord">
+    insert into pms_work_permit_processing_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="healthyId != null">
+        healthy_id,
+      </if>
+      <if test="familyPlanningCertificateId != null">
+        family_planning_certificate_id,
+      </if>
+      <if test="expirTime != null">
+        expir_time,
+      </if>
+      <if test="servTime != null">
+        serv_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="healthyId != null">
+        #{healthyId,jdbcType=INTEGER},
+      </if>
+      <if test="familyPlanningCertificateId != null">
+        #{familyPlanningCertificateId,jdbcType=VARCHAR},
+      </if>
+      <if test="expirTime != null">
+        #{expirTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="servTime != null">
+        #{servTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spaker.pmsystem.model.PmsWorkPermitProcessingRecordExample" resultType="java.lang.Integer">
+    select count(*) from pms_work_permit_processing_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pms_work_permit_processing_record
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.healthyId != null">
+        healthy_id = #{record.healthyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.familyPlanningCertificateId != null">
+        family_planning_certificate_id = #{record.familyPlanningCertificateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expirTime != null">
+        expir_time = #{record.expirTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.servTime != null">
+        serv_time = #{record.servTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pms_work_permit_processing_record
+    set id = #{record.id,jdbcType=INTEGER},
+      healthy_id = #{record.healthyId,jdbcType=INTEGER},
+      family_planning_certificate_id = #{record.familyPlanningCertificateId,jdbcType=VARCHAR},
+      expir_time = #{record.expirTime,jdbcType=TIMESTAMP},
+      serv_time = #{record.servTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spaker.pmsystem.model.PmsWorkPermitProcessingRecord">
+    update pms_work_permit_processing_record
+    <set>
+      <if test="healthyId != null">
+        healthy_id = #{healthyId,jdbcType=INTEGER},
+      </if>
+      <if test="familyPlanningCertificateId != null">
+        family_planning_certificate_id = #{familyPlanningCertificateId,jdbcType=VARCHAR},
+      </if>
+      <if test="expirTime != null">
+        expir_time = #{expirTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="servTime != null">
+        serv_time = #{servTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spaker.pmsystem.model.PmsWorkPermitProcessingRecord">
+    update pms_work_permit_processing_record
+    set healthy_id = #{healthyId,jdbcType=INTEGER},
+      family_planning_certificate_id = #{familyPlanningCertificateId,jdbcType=VARCHAR},
+      expir_time = #{expirTime,jdbcType=TIMESTAMP},
+      serv_time = #{servTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

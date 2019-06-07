@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaker.pmsystem.mapper.PmsFreeOfChargeMapper">
+  <resultMap id="BaseResultMap" type="com.spaker.pmsystem.model.PmsFreeOfCharge">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cardNumber" jdbcType="VARCHAR" property="cardnumber" />
+    <result column="cardType" jdbcType="CHAR" property="cardtype" />
+    <result column="is_alarm" jdbcType="CHAR" property="isAlarm" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cardNumber, cardType, is_alarm
+  </sql>
+  <select id="selectByExample" parameterType="com.spaker.pmsystem.model.PmsFreeOfChargeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pms_free_of_charge
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from pms_free_of_charge
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from pms_free_of_charge
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.spaker.pmsystem.model.PmsFreeOfChargeExample">
+    delete from pms_free_of_charge
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.spaker.pmsystem.model.PmsFreeOfCharge">
+    insert into pms_free_of_charge (id, cardNumber, cardType, 
+      is_alarm)
+    values (#{id,jdbcType=INTEGER}, #{cardnumber,jdbcType=VARCHAR}, #{cardtype,jdbcType=CHAR}, 
+      #{isAlarm,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.spaker.pmsystem.model.PmsFreeOfCharge">
+    insert into pms_free_of_charge
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cardnumber != null">
+        cardNumber,
+      </if>
+      <if test="cardtype != null">
+        cardType,
+      </if>
+      <if test="isAlarm != null">
+        is_alarm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cardnumber != null">
+        #{cardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null">
+        #{cardtype,jdbcType=CHAR},
+      </if>
+      <if test="isAlarm != null">
+        #{isAlarm,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.spaker.pmsystem.model.PmsFreeOfChargeExample" resultType="java.lang.Integer">
+    select count(*) from pms_free_of_charge
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pms_free_of_charge
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.cardnumber != null">
+        cardNumber = #{record.cardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardtype != null">
+        cardType = #{record.cardtype,jdbcType=CHAR},
+      </if>
+      <if test="record.isAlarm != null">
+        is_alarm = #{record.isAlarm,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pms_free_of_charge
+    set id = #{record.id,jdbcType=INTEGER},
+      cardNumber = #{record.cardnumber,jdbcType=VARCHAR},
+      cardType = #{record.cardtype,jdbcType=CHAR},
+      is_alarm = #{record.isAlarm,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spaker.pmsystem.model.PmsFreeOfCharge">
+    update pms_free_of_charge
+    <set>
+      <if test="cardnumber != null">
+        cardNumber = #{cardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null">
+        cardType = #{cardtype,jdbcType=CHAR},
+      </if>
+      <if test="isAlarm != null">
+        is_alarm = #{isAlarm,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spaker.pmsystem.model.PmsFreeOfCharge">
+    update pms_free_of_charge
+    set cardNumber = #{cardnumber,jdbcType=VARCHAR},
+      cardType = #{cardtype,jdbcType=CHAR},
+      is_alarm = #{isAlarm,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
