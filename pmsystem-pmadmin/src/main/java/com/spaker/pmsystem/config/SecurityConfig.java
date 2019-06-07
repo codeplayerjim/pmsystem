@@ -4,8 +4,6 @@ import com.spaker.pmsystem.bo.AdminUserDetails;
 import com.spaker.pmsystem.componemt.JwtAuthenticationTokenFilter;
 import com.spaker.pmsystem.componemt.RestAuthenticationEntryPoint;
 import com.spaker.pmsystem.componemt.RestfulAccessDeniedHandler;
-import com.spaker.pmsystem.model.PmsAdmin;
-import com.spaker.pmsystem.model.PmsPermission;
 import com.spaker.pmsystem.service.PmsAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

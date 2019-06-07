@@ -3,16 +3,11 @@ package com.spaker.pmsystem.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.spaker.pmsystem.dto.PmsEmployeeParam;
-import com.spaker.pmsystem.mapper.PmsEmployeeMapper;
-import com.spaker.pmsystem.model.PmsEmployee;
-import com.spaker.pmsystem.model.PmsEmployeeExample;
 import com.spaker.pmsystem.service.PmsEmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

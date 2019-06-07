@@ -2,9 +2,6 @@ package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsAdminLoginParam;
 import com.spaker.pmsystem.dto.PmsAdminParam;
-import com.spaker.pmsystem.model.PmsAdmin;
-import com.spaker.pmsystem.model.PmsPermission;
-import com.spaker.pmsystem.model.PmsRole;
 import com.spaker.pmsystem.service.PmsAdminService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult ;

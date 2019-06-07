@@ -1,7 +1,6 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsHealthCertificateParam;
-import com.spaker.pmsystem.model.PmsHealthCertificate;
 import com.spaker.pmsystem.service.PmsHealthCertificateService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult;

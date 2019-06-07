@@ -1,7 +1,6 @@
 package com.spaker.pmsystemdemo.demo.controller;
 
 
-import com.spaker.pmsystem.model.PmsBrand;
 import com.spaker.pmsystemdemo.demo.dto.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

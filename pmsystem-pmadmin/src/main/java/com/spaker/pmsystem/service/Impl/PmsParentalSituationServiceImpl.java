@@ -2,9 +2,6 @@ package com.spaker.pmsystem.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.spaker.pmsystem.dto.PmsParentalSituationParam;
-import com.spaker.pmsystem.mapper.PmsParentalSituationMapper;
-import com.spaker.pmsystem.model.PmsParentalSituation;
-import com.spaker.pmsystem.model.PmsParentalSituationExample;
 import com.spaker.pmsystem.service.PmsParentalSituationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

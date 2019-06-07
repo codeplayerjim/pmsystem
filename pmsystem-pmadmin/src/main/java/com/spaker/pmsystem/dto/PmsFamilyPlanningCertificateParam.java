@@ -1,7 +1,6 @@
 package com.spaker.pmsystem.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.spaker.pmsystem.model.PmsFamilyPlanningCertificate;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;

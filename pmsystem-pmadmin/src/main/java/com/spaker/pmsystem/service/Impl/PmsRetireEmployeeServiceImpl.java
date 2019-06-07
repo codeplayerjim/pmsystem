@@ -2,9 +2,6 @@ package com.spaker.pmsystem.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.spaker.pmsystem.dto.PmsRetireEmployeeParam;
-import com.spaker.pmsystem.mapper.PmsRetireEmployeeMapper;
-import com.spaker.pmsystem.model.PmsRetireEmployee;
-import com.spaker.pmsystem.model.PmsRetireEmployeeExample;
 import com.spaker.pmsystem.service.PmsRetireEmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

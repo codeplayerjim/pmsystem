@@ -2,9 +2,6 @@ package com.spaker.pmsystem.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.spaker.pmsystem.dto.PmsHealthCertificateParam;
-import com.spaker.pmsystem.mapper.PmsHealthCertificateMapper;
-import com.spaker.pmsystem.model.PmsHealthCertificate;
-import com.spaker.pmsystem.model.PmsHealthCertificateExample;
 import com.spaker.pmsystem.service.PmsHealthCertificateService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,9 +2,6 @@ package com.spaker.pmsystemdemo.demo.service.impl;
 
 
 import com.github.pagehelper.PageHelper;
-import com.spaker.pmsystem.mapper.PmsBrandMapper;
-import com.spaker.pmsystem.model.PmsBrand;
-import com.spaker.pmsystem.model.PmsBrandExample;
 import com.spaker.pmsystemdemo.demo.dto.PmsBrandDto;
 import com.spaker.pmsystemdemo.demo.service.DemoService;
 import org.springframework.beans.BeanUtils;

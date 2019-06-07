@@ -1,7 +1,6 @@
 package com.spaker.pmsystem.service;
 
 import com.spaker.pmsystem.dto.PmsPermissionNode;
-import com.spaker.pmsystem.model.PmsPermission;
 
 import java.util.List;
 

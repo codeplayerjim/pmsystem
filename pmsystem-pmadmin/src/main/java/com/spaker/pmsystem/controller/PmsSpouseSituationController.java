@@ -1,7 +1,6 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsSpouseSituationParam;
-import com.spaker.pmsystem.model.PmsSpouseSituation;
 import com.spaker.pmsystem.service.PmsSpouseSituationService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult;

@@ -33,10 +33,10 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.spaker.pmsystem.mapper"
                              targetProject="pmsystem-mbg\src\main\java"/>
         <!--生成全部表tableName设为%-->
-        <!--<table tableName="%">-->
-        <table tableName="pms_family_planning_certificate">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+        <table tableName="%"/>
+<!--        <table tableName="pms_family_planning_certificate">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
     </context>
 </generatorConfiguration>

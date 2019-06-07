@@ -1,6 +1,5 @@
 package com.spaker.pmsystemdemo.demo.service;
 
-import com.spaker.pmsystem.model.PmsBrand;
 import com.spaker.pmsystemdemo.demo.dto.PmsBrandDto;
 
 import java.util.List;

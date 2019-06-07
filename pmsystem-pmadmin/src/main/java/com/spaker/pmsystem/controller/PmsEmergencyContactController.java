@@ -1,7 +1,6 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsEmergencyContactParam;
-import com.spaker.pmsystem.model.PmsEmergencyContact;
 import com.spaker.pmsystem.service.PmsEmergencyContactService;
 import com.spaker.pmsystem.util.ExcelUtil;
 import com.spaker.pmsystem.vo.PmsEmergencyContactVO;

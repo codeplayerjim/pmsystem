@@ -1,8 +1,5 @@
 package com.spaker.pmsystem.dao;
 
-import com.spaker.pmsystem.model.PmsAdminRoleRelation;
-import com.spaker.pmsystem.model.PmsPermission;
-import com.spaker.pmsystem.model.PmsRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

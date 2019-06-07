@@ -1,7 +1,6 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsRetireEmployeeParam;
-import com.spaker.pmsystem.model.PmsRetireEmployee;
 import com.spaker.pmsystem.service.PmsRetireEmployeeService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult;

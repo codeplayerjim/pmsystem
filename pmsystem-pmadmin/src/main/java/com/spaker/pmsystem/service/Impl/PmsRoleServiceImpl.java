@@ -1,9 +1,6 @@
 package com.spaker.pmsystem.service.Impl;
 
 import com.spaker.pmsystem.dao.PmsRolePermissionRelationDao;
-import com.spaker.pmsystem.mapper.PmsRoleMapper;
-import com.spaker.pmsystem.mapper.PmsRolePermissionRelationMapper;
-import com.spaker.pmsystem.model.*;
 import com.spaker.pmsystem.service.PmsRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

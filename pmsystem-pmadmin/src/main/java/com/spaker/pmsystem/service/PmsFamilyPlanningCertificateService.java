@@ -1,7 +1,6 @@
 package com.spaker.pmsystem.service;
 
 import com.spaker.pmsystem.dto.PmsFamilyPlanningCertificateParam;
-import com.spaker.pmsystem.model.PmsFamilyPlanningCertificate;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
