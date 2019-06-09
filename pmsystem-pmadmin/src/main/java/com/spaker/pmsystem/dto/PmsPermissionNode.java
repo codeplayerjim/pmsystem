@@ -1,5 +1,6 @@
 package com.spaker.pmsystem.dto;
 
+import com.spaker.pmsystem.model.PmsPermission;
 import lombok.Getter;
 import lombok.Setter;
 
