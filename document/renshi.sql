@@ -127,8 +127,8 @@ DROP TABLE IF EXISTS `pms_free_of_charge`;
 CREATE TABLE `pms_free_of_charge` (
   `id` int(20) NOT NULL,
   `cardNumber` varchar(20) DEFAULT NULL COMMENT '卡号',
-  `cardType` ENUM('临时卡','钱包卡','无') CHARACTER SET utf8mb4 DEFAULT NULL,
-  is_alarm ENUM('新办理','旧办理')CHARACTER SET utf8mb4 DEFAULT NULL,
+  `cardType` ENUM('临时卡','钱包卡','无') CHARACTER SET utf8mb4 DEFAULT NULL comment '卡类型',
+  is_alarm ENUM('新办理','旧办理')CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '设置提醒新旧办理',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk COMMENT='免费伙食';
 
