@@ -1,6 +1,9 @@
 package com.spaker.pmsystem.service;
 
 import com.spaker.pmsystem.dto.PmsAdminParam;
+import com.spaker.pmsystem.model.PmsAdmin;
+import com.spaker.pmsystem.model.PmsPermission;
+import com.spaker.pmsystem.model.PmsRole;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

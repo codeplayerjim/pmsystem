@@ -1,5 +1,6 @@
 package com.spaker.pmsystem.dao;
 
+import com.spaker.pmsystem.model.PmsAdminPermissionRelation;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

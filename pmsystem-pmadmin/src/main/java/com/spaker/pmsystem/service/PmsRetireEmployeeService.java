@@ -1,6 +1,7 @@
 package com.spaker.pmsystem.service;
 
 import com.spaker.pmsystem.dto.PmsRetireEmployeeParam;
+import com.spaker.pmsystem.model.PmsRetireEmployee;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

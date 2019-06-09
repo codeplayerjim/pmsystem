@@ -1,6 +1,7 @@
 package com.spaker.pmsystem.service;
 
 import com.spaker.pmsystem.dto.PmsEmergencyContactParam;
+import com.spaker.pmsystem.model.PmsEmergencyContact;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

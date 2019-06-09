@@ -2,6 +2,7 @@ package com.spaker.pmsystem.service;
 
 
 import com.spaker.pmsystem.dto.PmsChildSituationParam;
+import com.spaker.pmsystem.model.PmsChildSituation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
