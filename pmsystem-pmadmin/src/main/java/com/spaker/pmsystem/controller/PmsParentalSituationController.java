@@ -1,6 +1,7 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsParentalSituationParam;
+import com.spaker.pmsystem.model.PmsParentalSituation;
 import com.spaker.pmsystem.service.PmsParentalSituationService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult;

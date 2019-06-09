@@ -1,6 +1,7 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsFamilyPlanningCertificateParam;
+import com.spaker.pmsystem.model.PmsFamilyPlanningCertificate;
 import com.spaker.pmsystem.service.PmsFamilyPlanningCertificateService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult;

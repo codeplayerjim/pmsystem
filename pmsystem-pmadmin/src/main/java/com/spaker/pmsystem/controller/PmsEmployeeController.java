@@ -1,6 +1,7 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsEmployeeParam;
+import com.spaker.pmsystem.model.PmsEmployee;
 import com.spaker.pmsystem.service.PmsEmployeeService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult;

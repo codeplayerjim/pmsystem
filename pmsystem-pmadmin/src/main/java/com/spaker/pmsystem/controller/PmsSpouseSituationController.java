@@ -1,6 +1,7 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsSpouseSituationParam;
+import com.spaker.pmsystem.model.PmsSpouseSituation;
 import com.spaker.pmsystem.service.PmsSpouseSituationService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult;
@@ -73,8 +74,8 @@ public class PmsSpouseSituationController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<CommonPage<PmsSpouseSituation>> getlist(@RequestParam(value = "name",required = false)String name,
-                          @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
-                          @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
+                                                                @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
+                                                                @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
         List<PmsSpouseSituation>pmsSpouseSituationList=pmsSpouseSituationService.listSpouse(name,pageNum,pageSize);
         return CommonResult.success(CommonPage.restPage(pmsSpouseSituationList));
     }

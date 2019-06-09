@@ -1,6 +1,7 @@
 package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsEmergencyContactParam;
+import com.spaker.pmsystem.model.PmsEmergencyContact;
 import com.spaker.pmsystem.service.PmsEmergencyContactService;
 import com.spaker.pmsystem.util.ExcelUtil;
 import com.spaker.pmsystem.vo.PmsEmergencyContactVO;
@@ -84,8 +85,8 @@ public class PmsEmergencyContactController {
     @ResponseBody
     @PreAuthorize("hasAuthority('pms:EmergencyContact:read')")
     public CommonResult<CommonPage<PmsEmergencyContact>> getlist(@RequestParam(value = "name",required = false)String name,
-                          @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
-                          @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
+                                                                 @RequestParam(value = "pageSize",defaultValue = "1")Integer pageSize,
+                                                                 @RequestParam(value = "pageNum",defaultValue = "5")Integer pageNum){
         List<PmsEmergencyContact>pmsEmergencyContactList=pmsEmergencyContactService.listEmergencyContact(name,pageSize,pageNum);
         return CommonResult.success(CommonPage.restPage(pmsEmergencyContactList));
     }
@@ -105,9 +106,9 @@ public class PmsEmergencyContactController {
         for (int i=0;i<list.size();i++){
             PmsEmergencyContactVO pmsEmergencyContactVO=new PmsEmergencyContactVO();
             PmsEmergencyContact pmsEmergencyContact=list.get(i);
-            pmsEmergencyContactVO.setName(pmsEmergencyContact.getName());
+            pmsEmergencyContactVO.setName(pmsEmergencyContact.getEmergname());
             pmsEmergencyContactVO.setId(pmsEmergencyContact.getId());
-            pmsEmergencyContactVO.setPhone(pmsEmergencyContact.getPhone());
+            pmsEmergencyContactVO.setPhone(pmsEmergencyContact.getEmergphone());
             list1.add(pmsEmergencyContactVO);
 
         }

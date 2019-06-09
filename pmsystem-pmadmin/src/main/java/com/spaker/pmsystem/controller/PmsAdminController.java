@@ -2,6 +2,9 @@ package com.spaker.pmsystem.controller;
 
 import com.spaker.pmsystem.dto.PmsAdminLoginParam;
 import com.spaker.pmsystem.dto.PmsAdminParam;
+import com.spaker.pmsystem.model.PmsAdmin;
+import com.spaker.pmsystem.model.PmsPermission;
+import com.spaker.pmsystem.model.PmsRole;
 import com.spaker.pmsystem.service.PmsAdminService;
 import com.sparker.pmsystem.common.api.CommonPage;
 import com.sparker.pmsystem.common.api.CommonResult ;
@@ -39,7 +42,7 @@ public class PmsAdminController {
     @ApiOperation(value = "管理员注册")
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     @ResponseBody
-    public CommonResult<PmsAdmin> register(@RequestBody PmsAdminParam pmsAdminParam,BindingResult result){
+    public CommonResult<PmsAdmin> register(@RequestBody PmsAdminParam pmsAdminParam, BindingResult result){
         PmsAdmin pmsAdmin=adminService.register(pmsAdminParam);
         if (pmsAdmin==null){
             return  CommonResult .failed();
