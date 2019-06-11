@@ -2,6 +2,9 @@ package com.spaker.pmsystem.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.spaker.pmsystem.dto.PmsEmergencyContactParam;
+import com.spaker.pmsystem.mapper.PmsEmergencyContactMapper;
+import com.spaker.pmsystem.model.PmsEmergencyContact;
+import com.spaker.pmsystem.model.PmsEmergencyContactExample;
 import com.spaker.pmsystem.service.PmsEmergencyContactService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +53,7 @@ public class PmsEmergencyContactServiceImpl implements PmsEmergencyContactServic
         pmsSpouseExample.setOrderByClause("sort desc");
         PmsEmergencyContactExample.Criteria criteria=pmsSpouseExample.createCriteria();
         if(StringUtils.isEmpty(name)){
-            criteria.andNameLike("%"+name+"%");
+            criteria.andEmergnameLike("%"+name+"%");
         }
         return pmsEmergencyContactMapper.selectByExample(pmsSpouseExample);
     }

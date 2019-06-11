@@ -2,6 +2,9 @@ package com.spaker.pmsystem.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.spaker.pmsystem.dto.PmsSpouseSituationParam;
+import com.spaker.pmsystem.mapper.PmsSpouseSituationMapper;
+import com.spaker.pmsystem.model.PmsSpouseSituation;
+import com.spaker.pmsystem.model.PmsSpouseSituationExample;
 import com.spaker.pmsystem.service.PmsSpouseSituationService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
