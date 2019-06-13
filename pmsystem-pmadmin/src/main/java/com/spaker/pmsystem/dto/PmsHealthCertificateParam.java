@@ -1,6 +1,7 @@
 package com.spaker.pmsystem.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.spaker.pmsystem.vaildator.FlagValidator;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class PmsHealthCertificateParam {
     @ApiModelProperty(value = "机构" ,required = true)
     private String institution;
     @ApiModelProperty(value = "是否有原件" ,required = true)
+    @FlagValidator({"是","否"})
     private String hasScript;
 
     public Date getServTime() {

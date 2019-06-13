@@ -3,6 +3,7 @@ package com.spaker.pmsystem.dto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -61,6 +62,7 @@ public class PmsEmployeeParam {
     private String graduatedSchool;
 
     @ApiModelProperty(value = "电子邮箱")
+    @Email(message = "邮箱格式不合理")
     private String email;
 
     @ApiModelProperty(value = "政治状态")

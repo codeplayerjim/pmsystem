@@ -1,5 +1,6 @@
 package com.spaker.pmsystem.dto;
 
+import com.spaker.pmsystem.vaildator.FlagValidator;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class PmsFreeOfChargeParam {
     @ApiModelProperty(value="卡类型")
     private String cardtype;
     @ApiModelProperty(value="设置新旧卡提醒")
+    @FlagValidator({"新办理","旧办理"})
     private String isAlarm;
 
 }

@@ -21,7 +21,7 @@ public class PmsParentalSituationParam {
     private String age;
     @ApiModelProperty(value = "工作单位" ,required = true)
     @NotEmpty(message = "工作单位不能为空")
-    private String employer;
+    private String workplace;
 
     @ApiModelProperty(value = "联系方式" ,required = true)
     private String phone;
